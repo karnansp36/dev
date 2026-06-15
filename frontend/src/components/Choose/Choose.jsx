@@ -81,8 +81,7 @@ const Choose = () => {
                     </div>
                     <div className="flex flex-1 flex-wrap justify-start items-start gap-2 mt-8">
                         <div className="border-[1px] border-[#b1a696] text-[#b1a696] lg:text-[2rem] px-[20px] py-[4px] rounded-full">
-                            Sustainable
-                        </diReact
+                            React
                         </div>
                         <div className="border-[1px] border-[#f4efe7] text-[#f4efe7] lg:text-[2rem] px-[20px] py-[4px] rounded-full">
                             TypeScript
@@ -98,6 +97,7 @@ const Choose = () => {
                         </div>
                         <div className="border-[1px] border-[#f4efe7] text-[#f4efe7] lg:text-[2rem] px-[20px] py-[4px] rounded-full">
                             Docker
+                        </div>
                     </div>
                 </div>
             </div>

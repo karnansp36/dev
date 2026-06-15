@@ -4,7 +4,7 @@ import { ScrollSmoother } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "../components/Navbar/Navbar";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { initLenis } from "../lib/lenis";
 import Preloader from "../components/Preloader/Preloader";
 import PreloaderII from "../components/Preloader/PreloaderII";
@@ -16,6 +16,7 @@ import FooterTitle from "../components/Footer/FooterTitle";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const MainLayout = () => {
+    const cursorRef = useRef(null);
 
     useGSAP(() => {
         ScrollSmoother.create({
@@ -26,12 +27,28 @@ const MainLayout = () => {
         });
     });
 
+    useEffect(() => {
+        const cursor = cursorRef.current;
+        if (!cursor) {
+            return;
+        }
+
+        const handleMove = (event) => {
+            cursor.style.left = `${event.clientX}px`;
+            cursor.style.top = `${event.clientY}px`;
+        };
+
+        window.addEventListener("mousemove", handleMove);
+        return () => window.removeEventListener("mousemove", handleMove);
+    }, []);
+
     return (
         <>
             <PreloaderII />
             <Logo />
             <ReserveBtn />
             <Navbar />
+            <div ref={cursorRef} className="global-cursor" />
             <div id="smooth-wrapper">
                 <div id="smooth-content">
                     <main>
